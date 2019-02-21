@@ -51,6 +51,11 @@ main section.categories-show {
         font-size: 0.8em;
       }
 
+      aside.sold-out {
+        background-color: red;
+        color: white;
+      }
+
       &:hover {
 
         border-color: #999;
