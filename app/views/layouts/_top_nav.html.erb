@@ -29,7 +29,6 @@
       <ul class="nav navbar-nav navbar-right">
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
             <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
             <span class="caret"></span>
           </a>
@@ -47,3 +46,9 @@
     </div>
   </div>
 </nav>
+
+<% if current_user %>
+              Signed in as <%= current_user.first_name %> | <%= link_to 'Logout', '/logout' %>
+            <% else %>
+              <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+            <% end %>
