@@ -10,29 +10,30 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+      UserMailer.receipt_email(order).deliver_now
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
 
-  rescue Stripe::CardError => e
-    redirect_to cart_path, flash: { error: e.message }
-  end
+    rescue Stripe::CardError => e
+      redirect_to cart_path, flash: { error: e.message }
+    end
 
-  private
+    private
 
-  def empty_cart!
-    # empty hash means no products in cart :)
-    update_cart({})
-  end
+    def empty_cart!
+      # empty hash means no products in cart :)
+      update_cart({})
+    end
 
-  def perform_stripe_charge
-    Stripe::Charge.create(
-      source:      params[:stripeToken],
-      amount:      cart_subtotal_cents,
-      description: "Khurram Virani's Jungle Order",
-      currency:    'cad'
-    )
+    def perform_stripe_charge
+      Stripe::Charge.create(
+        source:      params[:stripeToken],
+        amount:      cart_subtotal_cents,
+        description: "Khurram Virani's Jungle Order",
+        currency:    'cad'
+      )
   end
 
   def create_order(stripe_charge)
