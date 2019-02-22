@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <h3>Review this product</h3>
-      <%= form_for(product_reviews_path(@product, @product.reviews.build)) do |f| %>
+      <%= form_for([@product, @review]) do |f| %>
         Description : <%= f.text_area :description %><br />
         Rating : <%= f.select(:rating, [5, 4, 3, 2, 1]) %><br />
         <%= f.submit %>
