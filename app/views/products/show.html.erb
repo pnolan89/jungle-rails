@@ -25,6 +25,13 @@
         </dl>
       </div>
     </div>
+    <div class="row">
+      <% reviews = Review.where(:product_id => @product.id) %>
+      <% reviews.each do |review| %>
+        <h2><%= review.rating %>/5</h2>
+        <h5><%= review.description %></h5>
+      <% end %>
+    </div>
 
   </article>
 

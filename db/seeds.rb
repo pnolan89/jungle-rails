@@ -33,9 +33,12 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 
 puts "Re-creating Products ..."
 
+Review.destroy_all
+LineItem.destroy_all
+Order.destroy_all
 Product.destroy_all
 
-cat1.products.create!({
+p1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +46,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+p2 = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -51,7 +54,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+p3 = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -131,6 +134,27 @@ cat3.products.create!({
   quantity: 23,
   price: 2_483.75
 })
+
+p1.reviews.create!(
+  description: 'LOL',
+  rating: 5,
+  user_id: 1,
+  product_id: 1
+)
+
+p1.reviews.create!(
+  description: 'What?',
+  rating: 1,
+  user_id: 2,
+  product_id: 1
+)
+
+p1.reviews.create!(
+  description: 'No.',
+  rating: 4,
+  user_id: 3,
+  product_id: 1
+)
 
 
 puts "DONE!"
