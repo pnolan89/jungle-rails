@@ -16,8 +16,7 @@ A mini e-commerce application built with Rails 4.2.
  - Back End: Ruby on Rails
 
 ### Screenshots
-![Catalogue View](https://github.com/pnolan89/jungle-rails/blob/master/docs/Screen%20Shot%202019-02-22%20at%205.42.37%20PM.png?raw=true
-1)
+![Catalogue View](https://github.com/pnolan89/jungle-rails/blob/master/docs/Screen%20Shot%202019-02-22%20at%205.42.37%20PM.png?raw=true)
 ![Product Details Page](https://github.com/pnolan89/jungle-rails/blob/master/docs/Screen%20Shot%202019-02-22%20at%205.43.23%20PM.png?raw=true)
 ![Reviews Sample](https://github.com/pnolan89/jungle-rails/blob/master/docs/Screen%20Shot%202019-02-22%20at%205.47.53%20PM.png?raw=true)
 
