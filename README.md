@@ -1,7 +1,19 @@
-# Jungle
+Jungle
+=====================
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2.
 
+### Features
+- Visitors can view a list of products, including details and ratings associated with each
+- Visitors can items to a cart, and checkout using Swipe
+- Past order details can be viewed after purchase
+- Users can create accounts and write reviews on products
+- Admins can delete, edit, and create new products and categories
+
+
+### Project Stack
+ - Front End: HTML, SASS, Bootstrap
+ - Back End: Ruby on Rails
 
 ## Setup
 
@@ -23,6 +35,7 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ## Dependencies
 
-* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+* Rails 4.2
 * PostgreSQL 9.x
 * Stripe
+* Bcrypt
