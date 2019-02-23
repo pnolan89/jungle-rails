@@ -6,13 +6,10 @@ class ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.product_id = params[:product_id]
     @product = Product.find(params[:product_id])
-    puts 'REVIEW OBJECT:'
-    puts @review
-    puts @review.user_id
     if @review.save
-      redirect_to controller: 'products', action: 'show', id: params[:product_id], notice: 'Review saved!'
+      refresh('Review saved!')
     else
-      redirect_to controller: 'products', action: 'show', id: params[:product_id], notice: 'Not saved...'
+      refresh('Not saved...')
     end
   end
 
@@ -20,10 +17,14 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
 
-    redirect_to controller: 'products', action: 'show', id: params[:product_id]
+    refresh('Review deleted.')
   end
 
   private
+
+  def refresh(notice)
+    redirect_to controller: 'products', action: 'show', id: params[:product_id], notice: notice
+  end
 
   def require_login
     unless current_user
@@ -35,8 +36,7 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(
       :description,
-      :rating,
-      :product_id
+      :rating
     )
   end
 end

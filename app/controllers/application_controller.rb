@@ -38,4 +38,14 @@ class ApplicationController < ActionController::Base
     cookies[:cart]
   end
 
+  def sold_out?(product)
+    product.quantity == 0
+  end
+  helper_method :sold_out?
+
+  def avg_rating(product)
+    product.reviews.average(:rating).to_f.round(1)
+  end
+  helper_method :avg_rating
+
 end
