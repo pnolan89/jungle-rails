@@ -63,4 +63,31 @@ RSpec.describe User, type: :model do
       expect(subject.errors.full_messages[0]).to eql("Last name can't be blank")
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'returns user object if credentials are valid' do
+      subject.save!
+      expect(User.authenticate_with_credentials("example@example.com", "password")).to_not eql(nil)
+    end
+
+    it 'returns nil if email is invalid' do
+      subject.save!
+      expect(User.authenticate_with_credentials("incorrect@email", "password")).to eql(nil)
+    end
+
+    it 'returns nil if password is invalid' do
+      subject.save!
+      expect(User.authenticate_with_credentials("example@example.com", "notcorrect")).to eql(nil)
+    end
+
+    it 'returns user object if valid email contains spaces before or after' do
+      subject.save!
+      expect(User.authenticate_with_credentials(" example@example.com ", "password")).to_not eql(nil)
+    end
+
+    it 'returns user object if valid email contains unmatching case characters' do
+      subject.save!
+      expect(User.authenticate_with_credentials("eXaMpLe@ExAmPlE.cOm", "password")).to_not eql(nil)
+    end
+  end
 end
