@@ -17,5 +17,17 @@ RSpec.describe User, type: :model do
       expect(subject).to_not be_valid
       expect(subject.errors.full_messages[0]).to eql("Password can't be blank")
     end
+
+    it 'is not valid without a password_confirmation' do
+      subject.password_confirmation = nil
+      expect(subject).to_not be_valid
+      expect(subject.errors.full_messages[0]).to eql("Password confirmation can't be blank")
+    end
+
+    it 'is not valid when password and password_confirmation do not match' do
+      subject.password_confirmation = "somethingelse"
+      expect(subject).to_not be_valid
+      expect(subject.errors.full_messages[0]).to eql("Password confirmation doesn't match Password")
+    end
   end
 end
