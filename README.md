@@ -14,6 +14,7 @@ A mini e-commerce application built with Rails 4.2.
 ### Project Stack
  - Front End: HTML, SASS, Bootstrap
  - Back End: Ruby on Rails
+ - Testing: Rspec
 
 ### Screenshots
 ![Catalogue View](https://github.com/pnolan89/jungle-rails/blob/master/docs/Screen%20Shot%202019-02-22%20at%205.42.37%20PM.png?raw=true)
