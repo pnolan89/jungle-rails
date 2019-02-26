@@ -20,7 +20,6 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     # ACT
     visit root_path
     first('h4.product-name').click
-    # click_on 'h4.product-name'
 
     # DEBUG / VERIFY
     sleep 2
@@ -32,7 +31,6 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     # ACT
     visit root_path
     first('a.pull-right').click
-    # click_on 'h4.product-name'
 
     # DEBUG / VERIFY
     sleep 2
